@@ -39,14 +39,16 @@ namespace ASP_MVC_Employee_Page.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Register(IFormCollection form)
+        public IActionResult Register(AddEmployeeForm form)
         {
-            var firstName = form["FirstName"];
-            var lastName = form["LastName"];
-            var email = form["Email"];
-            var department = form["Department"];
-            employees.Add(new Employee { FirstName = firstName, LastName = lastName, Email = email, Department = department } );
-
+            if (ModelState.IsValid)
+            {
+                var firstName = form.FirstName;
+                var lastName = form.LastName;
+                var email = form.Email;
+                var department = form.Department;
+                employees.Add(new Employee { FirstName = firstName, LastName = lastName, Email = email, Department = department });
+            }
 
             return RedirectToAction("Index");
         }

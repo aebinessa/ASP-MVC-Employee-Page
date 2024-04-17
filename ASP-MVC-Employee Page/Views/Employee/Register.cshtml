@@ -1,19 +1,8 @@
-﻿@model Employee
-
-<form method="post" action="/Employee/Register">
-    <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="FirstName" required>
-
-    <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="LastName" required>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="Email" required>
-
-    <label for="department">Department:</label>
-    <input type="text" id="department" name="Department" required>
+﻿@model AddEmployeeForm
 
 
-
-    <button type="submit">Submit</button>
-</form>
+@using (Html.BeginForm("Register","Employee",FormMethod.Post))
+{
+    @Html.EditorForModel();
+    <button type="submit" class="btn btn-succuss">Add</button>
+}
